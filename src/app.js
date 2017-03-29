@@ -26,15 +26,14 @@ class App extends Component {
           }]}
         />
 
-        <div className='starred'>
-          <h2>Favoritos:</h2>
-          <ul>
-            <li>
-              <a href=''>Nome do repositório</a>
-            </li>
-          </ul>
-        </div>
-
+        <Repos
+          title='Favoritos:'
+          className='starred'
+          repos={[{
+            name: 'Meu repositório favorito',
+            link: 'http://myfavoriterepo.com'
+          }]}
+        />
       </div>
     )
   }
