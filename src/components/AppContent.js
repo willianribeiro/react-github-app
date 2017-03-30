@@ -16,8 +16,8 @@ class AppContent extends Component {
     return (
       <div className='app'>
         <Search />
-        {!!userSummary && <Actions />}
         {!!userSummary && <UserSummary userSummary={userSummary} />}
+        {!!userSummary && <Actions />}
 
         {!!repos.length &&
           <Repos
