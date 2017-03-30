@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const UserSummary = ({ userSummary }) => (
   <div className='user-summary'>
@@ -16,5 +16,15 @@ const UserSummary = ({ userSummary }) => (
     </ul>
   </div>
 )
+
+UserSummary.propTypes = {
+  userSummary: PropTypes.shape({
+    avatar_url: PropTypes.string.isRequired,
+    html_url: PropTypes.string.isRequired,
+    repos: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired
+  })
+}
 
 export default UserSummary
