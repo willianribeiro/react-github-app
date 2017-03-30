@@ -11,9 +11,11 @@ class App extends Component {
     this.state = {
       userSummary: {
         username: 'Willian Ribeiro',
+        html_url: 'https://github.com/willianribeiro',
+        avatar_url: 'https://avatars2.githubusercontent.com/u/3102551?v=3',
         repos: 19,
         followers: 10,
-        following: 11
+        following: 11,
       },
       repos: [{
         name: 'My Repo',

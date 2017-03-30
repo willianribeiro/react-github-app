@@ -2,17 +2,17 @@
 
 import React from 'react'
 
-const UserSummary = ({ children }) => (
+const UserSummary = ({ userSummary }) => (
   <div className='user-summary'>
-    <img src='https://avatars2.githubusercontent.com/u/3102551?v=3' alt='Foto de perfil' />
+    <img src={userSummary.avatar_url} alt='Foto de perfil' />
     <h1>
-      <a href='https://github.com/willianribeiro'>Willian Ribeiro</a>
+      <a href={userSummary.html_url}>{userSummary.username}</a>
     </h1>
 
     <ul className='repos-info'>
-      <li>Repositórios: 19</li>
-      <li>Seguidores: 20</li>
-      <li>Seguindo: 36</li>
+      <li>Repositórios: {userSummary.repos}</li>
+      <li>Seguidores: {userSummary.followers}</li>
+      <li>Seguindo: {userSummary.following}</li>
     </ul>
   </div>
 )
