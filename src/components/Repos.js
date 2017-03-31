@@ -8,8 +8,8 @@ const Repos = ({ title, className, repos }) => (
     <ul>
       {
         repos.map((item) => (
-          <li key={item.link}>
-            <a href={item.link}>{item.name}</a>
+          <li key={item.url}>
+            <a href={item.html_url}>{item.name}</a>
           </li>
         ))
       }

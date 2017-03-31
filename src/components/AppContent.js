@@ -11,14 +11,15 @@ class AppContent extends Component {
       userSummary,
       repos,
       starred,
-      handleSearch
+      handleSearch,
+      loadRepos
     } = this.props
 
     return (
       <div className='app'>
         <Search handleSearch={handleSearch} />
         {!!userSummary && <UserSummary userSummary={userSummary} />}
-        {!!userSummary && <Actions />}
+        {!!userSummary && <Actions loadRepos={loadRepos} />}
 
         {!!repos.length &&
           <Repos
