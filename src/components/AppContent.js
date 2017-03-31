@@ -10,12 +10,13 @@ class AppContent extends Component {
     const {
       userSummary,
       repos,
-      starred
+      starred,
+      handleSearch
     } = this.props
 
     return (
       <div className='app'>
-        <Search />
+        <Search handleSearch={handleSearch} />
         {!!userSummary && <UserSummary userSummary={userSummary} />}
         {!!userSummary && <Actions />}
 
@@ -40,7 +41,7 @@ class AppContent extends Component {
 }
 
 AppContent.propTypes = {
-  userSummary: PropTypes.object.isRequired,
+  userSummary: PropTypes.object,
   repos: PropTypes.array.isRequired,
   starred: PropTypes.array.isRequired
 }
