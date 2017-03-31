@@ -12,16 +12,22 @@ class AppContent extends Component {
       repos,
       starred,
       handleSearch,
-      loadRepos
+      loadRepos,
+      loadStarred
     } = this.props
 
     return (
       <div className='app'>
         <Search handleSearch={handleSearch} />
         {!!userSummary && <UserSummary userSummary={userSummary} />}
-        {!!userSummary && <Actions loadRepos={loadRepos} />}
+        {!!userSummary &&
+          <Actions
+            loadRepos={loadRepos}
+            loadStarred={loadStarred}
+          />
+        }
 
-        {!!repos.length &&
+        {!!repos.length && !starred.length &&
           <Repos
             title='Repositórios:'
             className='repos'
@@ -29,7 +35,7 @@ class AppContent extends Component {
           />
         }
 
-        {!!starred.length &&
+        {!!starred.length && !repos.length &&
           <Repos
             title='Favoritos:'
             className='starred'

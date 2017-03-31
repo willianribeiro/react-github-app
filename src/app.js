@@ -32,9 +32,12 @@ class App extends Component {
               repos: result.public_repos,
               followers: result.followers,
               following: result.following,
-              repos_url: result.repos_url
+              repos_url: result.repos_url,
+              starred_url: `${result.url}/starred`
             }
           })
+          this.setState({repos: []})
+          this.setState({starred: []})
         })
     }
   }
@@ -45,8 +48,19 @@ class App extends Component {
     ajax()
       .get(repos_url)
       .then((result) => {
-        console.log(result)
         this.setState({repos: result})
+        this.setState({starred: []})
+      })
+  }
+
+  loadStarred = () => {
+    const {starred_url} = this.state.userSummary
+
+    ajax()
+      .get(starred_url)
+      .then((result) => {
+        this.setState({starred: result})
+        this.setState({repos: []})
       })
   }
 
@@ -64,6 +78,7 @@ class App extends Component {
         starred={starred}
         handleSearch={(event) => { this.handleSearch(event) }}
         loadRepos={this.loadRepos}
+        loadStarred={this.loadStarred}
       />
     )
   }
