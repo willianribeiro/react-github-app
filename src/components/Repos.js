@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 
 const Repos = ({ title, className, repos }) => (
   <div className={className}>
-    <h2>{title}</h2>
+    <h2>{`${title} (${repos.length})`}</h2>
     <ul>
       {
         repos.map((item) => (
