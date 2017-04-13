@@ -13,18 +13,17 @@ class AppContent extends Component {
       starred,
       handleSearch,
       loadRepos,
-      loadStarred
+      loadStarred,
+      isFetching
     } = this.props
 
     return (
       <div className='app'>
-        <Search handleSearch={handleSearch} />
+        <Search handleSearch={handleSearch} disabled={isFetching} />
+        {isFetching && <div>carregando...</div>}
         {!!userSummary && <UserSummary userSummary={userSummary} />}
         {!!userSummary &&
-          <Actions
-            loadRepos={loadRepos}
-            loadStarred={loadStarred}
-          />
+          <Actions loadRepos={loadRepos} loadStarred={loadStarred} />
         }
 
         {!!repos.length && !starred.length &&
@@ -50,7 +49,8 @@ class AppContent extends Component {
 AppContent.propTypes = {
   userSummary: PropTypes.object,
   repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired
+  starred: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired
 }
 
 export default AppContent

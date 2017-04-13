@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       userSummary: null,
       repos: [],
-      starred: []
+      starred: [],
+      isFetching: false
     }
   }
 
@@ -21,6 +22,7 @@ class App extends Component {
     const value = event.target.value
 
     if (key === ENTER) {
+      this.setState({isFetching: true})
       ajax()
         .get(`https://api.github.com/users/${value}`)
         .then((result) => {
@@ -38,6 +40,9 @@ class App extends Component {
           })
           this.setState({repos: []})
           this.setState({starred: []})
+        })
+        .always(() => {
+          this.setState({isFetching: false})
         })
     }
   }
@@ -68,7 +73,8 @@ class App extends Component {
     const {
       userSummary,
       repos,
-      starred
+      starred,
+      isFetching
     } = this.state
 
     return (
@@ -76,6 +82,7 @@ class App extends Component {
         userSummary={userSummary}
         repos={repos}
         starred={starred}
+        isFetching={isFetching}
         handleSearch={(event) => { this.handleSearch(event) }}
         loadRepos={this.loadRepos}
         loadStarred={this.loadStarred}
